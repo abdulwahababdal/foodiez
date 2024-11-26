@@ -88,6 +88,7 @@ class RecipePage extends StatelessWidget {
                       ],
                     ),
                   ),
+                  /*
                   Container(
                     padding: EdgeInsets.all(10),
                     decoration: BoxDecoration(
@@ -108,6 +109,7 @@ class RecipePage extends StatelessWidget {
                       ],
                     ),
                   ),
+                  */
                 ],
               ),
             ),
@@ -133,6 +135,7 @@ class RecipePage extends StatelessWidget {
             ),
             const SizedBox(height: 20),
             ////////  for attributes icons (time, servings, calories, difficulty)
+            /*
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
               child: Row(
@@ -146,6 +149,7 @@ class RecipePage extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 30),
+            */
             ///////// ingredients title
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20.0),
