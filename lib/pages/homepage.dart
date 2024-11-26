@@ -1,6 +1,12 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:foodiez/pages/chineserecipes.dart';
+import 'package:foodiez/pages/egyptionrecipes.dart';
+import 'package:foodiez/pages/indianRecipes.dart';
+import 'package:foodiez/pages/japaneserecipes.dart';
+import 'package:foodiez/pages/kuwaitirecipes.dart';
 import 'package:foodiez/pages/recipepage.dart';
+
 
 class HomePage extends StatefulWidget {
   @override
@@ -265,53 +271,86 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           const SizedBox(height: 16),
-          SizedBox(
-            height: 150,
-            child: ListView.builder(
-              scrollDirection: Axis.horizontal,
-              itemCount: categories.length,
-              itemBuilder: (context, index) {
-                return Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8),
-                  child: Column(
-                    children: [
-                      Container(
-                        width: 120,
-                        height: 100,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(15),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.black.withOpacity(0.2),
-                              blurRadius: 5,
-                              offset: Offset(0, 3),
-                            ),
-                          ],
-                        ),
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(15),
-                          child: Image.asset(
-                            categories[index]['image']!,
-                            fit: BoxFit.cover,
-                            errorBuilder: (context, error, stackTrace) =>
-                                Container(color: Colors.grey),
-                          ),
-                        ),
-                      ),
-                      const SizedBox(height: 8),
-                      Text(
-                        categories[index]['title']!,
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 15,
-                        ),
-                      ),
-                    ],
+SizedBox(
+  height: 150,
+  child: ListView.builder(
+    scrollDirection: Axis.horizontal,
+    itemCount: categories.length,
+    itemBuilder: (context, index) {
+      return Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 8),
+        child: InkWell(
+          onTap: () {
+            // Navigate based on the category title
+            if (categories[index]['title'] == 'Chinese Food') {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => ChineseRecipesPage()),
+              );
+            } else if (categories[index]['title'] == 'Egyptian Food') {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => EgyptianRecipesPage()),
+              );
+            } else if (categories[index]['title'] == 'Kuwaiti Food') {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => KuwaitiRecipesPage()),
+              );
+            } else if (categories[index]['title'] == 'Indian Food') {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => IndianRecipesPage()),
+              );
+            } else if (categories[index]['title'] == 'Japanese Food') {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => JapaneseRecipesPage()),
+              );
+            }
+          },
+          child: Column(
+            children: [
+              Container(
+                width: 120,
+                height: 100,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.2),
+                      blurRadius: 5,
+                      offset: Offset(0, 3),
+                    ),
+                  ],
+                ),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(15),
+                  child: Image.asset(
+                    categories[index]['image']!,
+                    fit: BoxFit.cover,
+                    errorBuilder: (context, error, stackTrace) =>
+                        Container(color: Colors.grey),
                   ),
-                );
-              },
-            ),
+                ),
+              ),
+              const SizedBox(height: 8),
+              Text(
+                categories[index]['title']!,
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 15,
+                ),
+              ),
+            ],
           ),
+        ),
+      );
+    },
+  ),
+),
+
+  
           const SizedBox(height: 20),
           ////////// title for popular recipes
           Padding(
