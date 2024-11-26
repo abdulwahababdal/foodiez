@@ -12,7 +12,7 @@ class FoodiezApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'DishCraft',
       theme: ThemeData(
-        primarySwatch: Colors.orange,
+        primarySwatch: Colors.red,
         scaffoldBackgroundColor: Colors.white,
       ),
       home: HomePage(), 

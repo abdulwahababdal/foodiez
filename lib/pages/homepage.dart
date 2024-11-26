@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:foodiez/pages/recipepage.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -14,7 +15,7 @@ class _HomePageState extends State<HomePage> {
     'assets/images/kuwaitifood.jpeg',
   ];
 
-  final List<Map<String, String>> categories = [
+  final List<Map<String, dynamic>> categories = [
     {'image': 'assets/images/chinessfood.webp', 'title': 'Chinese Food'},
     {'image': 'assets/images/Egyptfood.webp', 'title': 'Egyptian Food'},
     {'image': 'assets/images/kuwaitifood.jpeg', 'title': 'Kuwaiti Food'},
@@ -22,17 +23,126 @@ class _HomePageState extends State<HomePage> {
     {'image': 'images/japanfood.jpg', 'title': 'Japanese Food'},
   ];
 
-  final List<Map<String, String>> popularRecipes = [
-    {'image': 'assets/images/chinessfood.webp', 'name': 'Sweet and Sour Chicken'},
-    {'image': 'assets/images/Egyptfood.webp', 'name': 'Koshari'},
-    {'image': 'assets/images/kuwaitifood.jpeg', 'name': 'Machboos'},
-    {'image': 'images/butterchicken.jpeg', 'name': 'Butter Chicken'},
-    {'image': 'images/salmonsushi.jpg', 'name': 'Sushi'},
-    {'image': 'images/KungPaoChicken.jpeg', 'name': 'Kung Pao Chicken'},
-    {'image': 'images/fattah.jpg', 'name': 'Fattah'},
-    {'image': 'images/harres.jpeg', 'name': 'Harees'},
-    {'image': 'images/tandorechicken.webp', 'name': 'Tandoori Chicken'},
-    {'image': 'images/Ramen.webp', 'name': 'Ramen'},
+  final List<Map<String, dynamic>> popularRecipes = [
+    {
+      'image': 'assets/images/chinessfood.webp',
+      'name': 'Sweet and Sour Chicken',
+      'description': 'A delicious Chinese dish with sweet and tangy flavors.',
+      'ingredients': ['Chicken', 'Bell Peppers', 'Pineapple', 'Soy Sauce'],
+      'steps': [
+        'Heat oil in a pan.',
+        'Add chicken and cook until golden brown.',
+        'Mix in bell peppers and pineapple.',
+        'Add soy sauce and simmer for 10 minutes.',
+      ],
+    },
+    {
+      'image': 'assets/images/Egyptfood.webp',
+      'name': 'Koshari',
+      'description': 'A traditional Egyptian comfort food made with rice and lentils.',
+      'ingredients': ['Rice', 'Lentils', 'Tomato Sauce', 'Crispy Onions'],
+      'steps': [
+        'Cook rice and lentils separately.',
+        'Prepare tomato sauce with garlic and spices.',
+        'Layer rice, lentils, and sauce on a plate.',
+        'Top with crispy onions before serving.',
+      ],
+    },
+    {
+      'image': 'assets/images/kuwaitifood.jpeg',
+      'name': 'Machboos',
+      'description': 'A flavorful Kuwaiti rice dish with spiced chicken or lamb.',
+      'ingredients': ['Rice', 'Chicken', 'Spices', 'Onions', 'Tomatoes'],
+      'steps': [
+        'Marinate chicken with spices.',
+        'Cook rice with onions and tomatoes.',
+        'Layer chicken on top of the rice.',
+        'Simmer together for 30 minutes.',
+      ],
+    },
+    {
+      'image': 'images/butterchicken.jpeg',
+      'name': 'Butter Chicken',
+      'description': 'A creamy and spiced Indian curry with chicken.',
+      'ingredients': ['Chicken', 'Tomatoes', 'Cream', 'Butter'],
+      'steps': [
+        'Marinate chicken with yogurt and spices.',
+        'Cook chicken in butter until tender.',
+        'Prepare the sauce with tomatoes and cream.',
+        'Simmer chicken in the sauce for 15 minutes.',
+      ],
+    },
+    {
+      'image': 'images/salmonsushi.jpg',
+      'name': 'Sushi',
+      'description': 'A Japanese dish made with vinegared rice and fresh seafood.',
+      'ingredients': ['Rice', 'Salmon', 'Seaweed', 'Soy Sauce'],
+      'steps': [
+        'Cook rice and season with vinegar.',
+        'Slice salmon thinly.',
+        'Roll rice and salmon in seaweed.',
+        'Serve with soy sauce and wasabi.',
+      ],
+    },
+    {
+      'image': 'images/KungPaoChicken.jpeg',
+      'name': 'Kung Pao Chicken',
+      'description': 'A spicy Chinese stir-fry with peanuts and chili peppers.',
+      'ingredients': ['Chicken', 'Peanuts', 'Chili', 'Soy Sauce'],
+      'steps': [
+        'Sauté chicken with soy sauce.',
+        'Add chili peppers and peanuts.',
+        'Cook until chicken is tender.',
+        'Serve with steamed rice.',
+      ],
+    },
+    {
+      'image': 'images/fattah.jpg',
+      'name': 'Fattah',
+      'description': 'A Middle Eastern dish made with rice, meat, and bread.',
+      'ingredients': ['Rice', 'Bread', 'Lamb', 'Yogurt'],
+      'steps': [
+        'Cook rice with broth.',
+        'Layer bread, rice, and lamb in a dish.',
+        'Top with garlic yogurt sauce.',
+        'Bake for 15 minutes.',
+      ],
+    },
+    {
+      'image': 'images/harres.jpeg',
+      'name': 'Harees',
+      'description': 'A traditional Arabian dish made with wheat and meat.',
+      'ingredients': ['Wheat', 'Meat', 'Salt', 'Butter'],
+      'steps': [
+        'Soak wheat overnight.',
+        'Cook meat and wheat together.',
+        'Mash to a smooth consistency.',
+        'Serve with melted butter.',
+      ],
+    },
+    {
+      'image': 'images/tandorechicken.webp',
+      'name': 'Tandoori Chicken',
+      'description': 'An Indian dish marinated with yogurt and spices, roasted.',
+      'ingredients': ['Chicken', 'Yogurt', 'Spices'],
+      'steps': [
+        'Marinate chicken with yogurt and spices.',
+        'Roast chicken in the oven.',
+        'Serve with mint chutney.',
+      ],
+    },
+    {
+      'image': 'images/Ramen.webp',
+      'name': 'Ramen',
+      'description': 'A Japanese noodle soup dish with savory broth.',
+      'ingredients': ['Noodles', 'Egg', 'Broth', 'Pork'],
+      'steps': [
+        'Cook noodles and set aside.',
+        'Prepare broth with pork and soy sauce.',
+        'Add noodles and boiled egg to the broth.',
+        'Serve hot with toppings of choice.',
+      ],
+    },
   ];
 
   int _currentPage = 0;
@@ -91,7 +201,7 @@ class _HomePageState extends State<HomePage> {
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Photo carousel
+          /////// 3 Photos 
           SizedBox(
             height: 250,
             child: PageView.builder(
@@ -125,7 +235,7 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           const SizedBox(height: 16),
-          // Dots indicator
+          //////// dots indicator
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: List.generate(
@@ -143,7 +253,7 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           const SizedBox(height: 20),
-          // Categories section
+          ////// categories section
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
             child: Text(
@@ -203,7 +313,7 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           const SizedBox(height: 20),
-          // Title for Popular Recipes
+          ////////// title for popular recipes
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
             child: Text(
@@ -214,11 +324,15 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
           ),
-          // Scrollable part: Popular Recipes inside shadowed container
+          ///////// popular recipes list
           Expanded(
             child: Container(
               decoration: BoxDecoration(
                 color: Colors.white,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(30),
+                  topRight: Radius.circular(30),
+                ),
                 boxShadow: [
                   BoxShadow(
                     color: Colors.black.withOpacity(0.2),
@@ -230,51 +344,68 @@ class _HomePageState extends State<HomePage> {
               child: ListView.builder(
                 itemCount: popularRecipes.length,
                 itemBuilder: (context, index) {
-                  return Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(15),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black.withOpacity(0.2),
-                            blurRadius: 5,
-                            offset: Offset(0, 3),
+                  final recipe = popularRecipes[index];
+                  return InkWell(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => RecipePage(
+                            image: recipe['image']!,
+                            name: recipe['name']!,
+                            description: recipe['description']!,
+                            ingredients: List<String>.from(recipe['ingredients']),
+                            steps: List<String>.from(recipe['steps']),
                           ),
-                        ],
-                      ),
-                      child: Row(
-                        children: [
-                          ClipRRect(
-                            borderRadius: BorderRadius.circular(15),
-                            child: Image.asset(
-                              popularRecipes[index]['image']!,
-                              width: 100,
-                              height: 100,
-                              fit: BoxFit.cover,
-                              errorBuilder: (context, error, stackTrace) =>
-                                  Container(
+                        ),
+                      );
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(15),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withOpacity(0.2),
+                              blurRadius: 5,
+                              offset: Offset(0, 3),
+                            ),
+                          ],
+                        ),
+                        child: Row(
+                          children: [
+                            ClipRRect(
+                              borderRadius: BorderRadius.circular(15),
+                              child: Image.asset(
+                                recipe['image']!,
                                 width: 100,
                                 height: 100,
-                                color: Colors.grey,
-                                child: Center(
-                                  child: Icon(Icons.broken_image, size: 50),
+                                fit: BoxFit.cover,
+                                errorBuilder: (context, error, stackTrace) =>
+                                    Container(
+                                  width: 100,
+                                  height: 100,
+                                  color: Colors.grey,
+                                  child: Center(
+                                    child: Icon(Icons.broken_image, size: 50),
+                                  ),
                                 ),
                               ),
                             ),
-                          ),
-                          const SizedBox(width: 16),
-                          Expanded(
-                            child: Text(
-                              popularRecipes[index]['name']!,
-                              style: TextStyle(
-                                fontWeight: FontWeight.bold,
-                                fontSize: 18,
+                            const SizedBox(width: 16),
+                            Expanded(
+                              child: Text(
+                                recipe['name']!,
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 18,
+                                ),
                               ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
                   );
