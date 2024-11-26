@@ -22,11 +22,11 @@ class _HomePageState extends State<HomePage> {
   ];
 
   final List<Map<String, dynamic>> categories = [
-    {'image': 'assets/images/chinessfood.webp', 'title': 'Chinese Food'},
-    {'image': 'assets/images/Egyptfood.webp', 'title': 'Egyptian Food'},
-    {'image': 'assets/images/kuwaitifood.jpeg', 'title': 'Kuwaiti Food'},
-    {'image': 'images/indianfood.jpg', 'title': 'Indian Food'},
-    {'image': 'images/japanfood.jpg', 'title': 'Japanese Food'},
+    {'image': 'images/chinese.png', 'title': 'Chinese Food'},
+    {'image': '/images/egypt.png', 'title': 'Egyptian Food'},
+    {'image': 'images/kuwait.png', 'title': 'Kuwaiti Food'},
+    {'image': 'images/indian.png', 'title': 'Indian Food'},
+    {'image': 'images/japanese.png', 'title': 'Japanese Food'},
   ];
 
   final List<Map<String, dynamic>> popularRecipes = [
@@ -281,7 +281,7 @@ SizedBox(
         padding: const EdgeInsets.symmetric(horizontal: 8),
         child: InkWell(
           onTap: () {
-            // Navigate based on the category title
+            ////// navigate based on the category title
             if (categories[index]['title'] == 'Chinese Food') {
               Navigator.push(
                 context,
