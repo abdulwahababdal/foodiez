@@ -1,6 +1,9 @@
 import 'package:dio/dio.dart';
 
-const _baseUrl = 'http://localhost:8002';
-
-// global variable
-final Dio dio = Dio(BaseOptions(baseUrl: _baseUrl));
+class Client {
+  static final Dio dio = Dio(BaseOptions(
+      connectTimeout: const Duration(milliseconds: 5000),
+      receiveTimeout: const Duration(milliseconds: 5000),
+      baseUrl:
+          'http://localhost:8000')); //'https://coded-pets-api-auth.eapi.joincoded.com';
+}

@@ -20,7 +20,7 @@ class AuthProvider extends ChangeNotifier {
     notifyListeners();
 
     //Set authorization header in Dio client
-    dio.options.headers[HttpHeaders.authorizationHeader] =
+    Client.dio.options.headers[HttpHeaders.authorizationHeader] =
         "Bearer ${user!.token}";
 
     // Storing username and token using shared_prefrences
@@ -36,7 +36,7 @@ class AuthProvider extends ChangeNotifier {
       notifyListeners();
 
       // Set authorization header in Dio client
-      dio.options.headers[HttpHeaders.authorizationHeader] =
+      Client.dio.options.headers[HttpHeaders.authorizationHeader] =
           "Bearer ${user!.token}";
 
       // Storing username and token using shared_preferences
@@ -60,7 +60,8 @@ class AuthProvider extends ChangeNotifier {
       return;
     }
 
-    dio.options.headers[HttpHeaders.authorizationHeader] = "Bearer $token";
+    Client.dio.options.headers[HttpHeaders.authorizationHeader] =
+        "Bearer $token";
 
     // create user object
     user = User(token: token, username: username);

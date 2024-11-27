@@ -1,37 +1,42 @@
 import 'package:foodiez/models/ingredient.dart';
 
 class Recipe {
-  String id;
+  String? id;
   String name;
+  String username;
+  List<dynamic> ingredients;
+  String? description;
   String category;
-  List<Ingredient> ingredients;
-  String instructions;
+  String? image;
+  List<dynamic>? steps;
 
-  Recipe({
-    required this.id,
-    required this.name,
-    required this.category,
-    required this.ingredients,
-    required this.instructions,
-  });
+  Recipe(
+      {this.id,
+      required this.name,
+      required this.username,
+      required this.ingredients,
+      this.description,
+      required this.category,
+      this.image,
+      this.steps});
 
   Recipe.fromJson(Map<String, dynamic> json)
-      : id = json['id'] as String,
+      : id = json['_id'] as String?,
         name = json['name'] as String,
+        username = json['userId']['username'] as String,
+        ingredients = json['ingredients'] as List<dynamic>,
+        description = json['description'] as String?,
         category = json['category'] as String,
-        ingredients = (json['ingredients'] as List)
-            .map((item) => Ingredient.fromJson(item as Map<String, dynamic>))
-            .toList(),
-        instructions = json['instructions'] as String;
+        image = json['image'] as String?,
+        steps = json['steps'] as List<dynamic>;
 
-  Map<String, dynamic> toJson() {
-    return <String, dynamic>{
-      'id': id,
-      'name': name,
-      'category': category,
-      'ingredients':
-          ingredients.map((ingredient) => ingredient.toJson()).toList(),
-      'instructions': instructions,
-    };
-  }
+  Recipe.fromJson2(Map<String, dynamic> json)
+      : id = json['_id'] as String?,
+        name = json['name'] as String,
+        username = json['username'] as String,
+        ingredients = json['ingredients'] as List<dynamic>,
+        description = json['description'] as String?,
+        category = json['category'] as String,
+        image = json['image'] as String?,
+        steps = json['steps'] as List<dynamic>;
 }
