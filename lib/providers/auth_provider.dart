@@ -29,6 +29,25 @@ class AuthProvider extends ChangeNotifier {
     prefs.setString("token", user!.token);
   }
 
+  Future<void> signIn({required String email, required String password}) async {
+    try {
+      // Call API to sign in
+      user = await signInAPI(email, password);
+      notifyListeners();
+
+      // Set authorization header in Dio client
+      dio.options.headers[HttpHeaders.authorizationHeader] =
+          "Bearer ${user!.token}";
+
+      // Storing username and token using shared_preferences
+      var prefs = await SharedPreferences.getInstance();
+      prefs.setString("username", user!.username);
+      prefs.setString("token", user!.token);
+    } catch (e) {
+      throw Exception("Sign in failed: ${e.toString()}");
+    }
+  }
+
   Future<void> loadPreviousUser() async {
     // read from shared
     var prefs = await SharedPreferences.getInstance();
