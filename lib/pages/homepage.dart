@@ -1,7 +1,13 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:foodiez/pages/chineserecipes.dart';
+import 'package:foodiez/pages/egyptionrecipes.dart';
+import 'package:foodiez/pages/indianRecipes.dart';
+import 'package:foodiez/pages/japaneserecipes.dart';
+import 'package:foodiez/pages/kuwaitirecipes.dart';
 import 'package:foodiez/pages/recipepage.dart';
 import 'package:foodiez/widgets/drawer.dart';
+
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -19,11 +25,11 @@ class _HomePageState extends State<HomePage> {
   ];
 
   final List<Map<String, dynamic>> categories = [
-    {'image': 'assets/images/chinessfood.webp', 'title': 'Chinese Food'},
-    {'image': 'assets/images/Egyptfood.webp', 'title': 'Egyptian Food'},
-    {'image': 'assets/images/kuwaitifood.jpeg', 'title': 'Kuwaiti Food'},
-    {'image': 'images/indianfood.jpg', 'title': 'Indian Food'},
-    {'image': 'images/japanfood.jpg', 'title': 'Japanese Food'},
+    {'image': 'assets/images/chinese.png', 'title': 'Chinese Food'},
+    {'image': 'assets/images/egypt.png', 'title': 'Egyptian Food'},
+    {'image': 'assets/images/kuwait.png', 'title': 'Kuwaiti Food'},
+    {'image': 'assets/images/indian.png', 'title': 'Indian Food'},
+    {'image': 'assets/images/japanese.png', 'title': 'Japanese Food'},
   ];
 
   final List<Map<String, dynamic>> popularRecipes = [
@@ -66,7 +72,7 @@ class _HomePageState extends State<HomePage> {
       ],
     },
     {
-      'image': 'images/butterchicken.jpeg',
+      'image': 'assets/images/butterchicken.jpeg',
       'name': 'Butter Chicken',
       'description': 'A creamy and spiced Indian curry with chicken.',
       'ingredients': ['Chicken', 'Tomatoes', 'Cream', 'Butter'],
@@ -78,7 +84,7 @@ class _HomePageState extends State<HomePage> {
       ],
     },
     {
-      'image': 'images/salmonsushi.jpg',
+      'image': 'assets/images/salmonsushi.jpg',
       'name': 'Sushi',
       'description':
           'A Japanese dish made with vinegared rice and fresh seafood.',
@@ -91,7 +97,7 @@ class _HomePageState extends State<HomePage> {
       ],
     },
     {
-      'image': 'images/KungPaoChicken.jpeg',
+      'image': 'assets/images/KungPaoChicken.jpeg',
       'name': 'Kung Pao Chicken',
       'description': 'A spicy Chinese stir-fry with peanuts and chili peppers.',
       'ingredients': ['Chicken', 'Peanuts', 'Chili', 'Soy Sauce'],
@@ -103,7 +109,7 @@ class _HomePageState extends State<HomePage> {
       ],
     },
     {
-      'image': 'images/fattah.jpg',
+      'image': 'assets/images/fattah.jpg',
       'name': 'Fattah',
       'description': 'A Middle Eastern dish made with rice, meat, and bread.',
       'ingredients': ['Rice', 'Bread', 'Lamb', 'Yogurt'],
@@ -115,7 +121,7 @@ class _HomePageState extends State<HomePage> {
       ],
     },
     {
-      'image': 'images/harres.jpeg',
+      'image': 'assets/images/harres.jpeg',
       'name': 'Harees',
       'description': 'A traditional Arabian dish made with wheat and meat.',
       'ingredients': ['Wheat', 'Meat', 'Salt', 'Butter'],
@@ -127,7 +133,7 @@ class _HomePageState extends State<HomePage> {
       ],
     },
     {
-      'image': 'images/tandorechicken.webp',
+      'image': 'assets/images/tandorechicken.webp',
       'name': 'Tandoori Chicken',
       'description':
           'An Indian dish marinated with yogurt and spices, roasted.',
@@ -139,7 +145,7 @@ class _HomePageState extends State<HomePage> {
       ],
     },
     {
-      'image': 'images/Ramen.webp',
+      'image': 'assets/images/Ramen.webp',
       'name': 'Ramen',
       'description': 'A Japanese noodle soup dish with savory broth.',
       'ingredients': ['Noodles', 'Egg', 'Broth', 'Pork'],
@@ -273,6 +279,7 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
           const SizedBox(height: 16),
+
           SizedBox(
             height: 150,
             child: ListView.builder(
@@ -315,11 +322,87 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ),
                     ],
+SizedBox(
+  height: 150,
+  child: ListView.builder(
+    scrollDirection: Axis.horizontal,
+    itemCount: categories.length,
+    itemBuilder: (context, index) {
+      return Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 8),
+        child: InkWell(
+          onTap: () {
+            ////// navigate based on the category title
+            if (categories[index]['title'] == 'Chinese Food') {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => ChineseRecipesPage()),
+              );
+            } else if (categories[index]['title'] == 'Egyptian Food') {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => EgyptianRecipesPage()),
+              );
+            } else if (categories[index]['title'] == 'Kuwaiti Food') {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => KuwaitiRecipesPage()),
+              );
+            } else if (categories[index]['title'] == 'Indian Food') {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => IndianRecipesPage()),
+              );
+            } else if (categories[index]['title'] == 'Japanese Food') {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => JapaneseRecipesPage()),
+              );
+            }
+          },
+          child: Column(
+            children: [
+              Container(
+                width: 120,
+                height: 100,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(15),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.2),
+                      blurRadius: 5,
+                      offset: Offset(0, 3),
+                    ),
+                  ],
+                ),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(15),
+                  child: Image.asset(
+                    categories[index]['image']!,
+                    fit: BoxFit.cover,
+                    errorBuilder: (context, error, stackTrace) =>
+                        Container(color: Colors.grey),
+
                   ),
-                );
-              },
-            ),
+                ),
+              ),
+              const SizedBox(height: 8),
+              Text(
+                categories[index]['title']!,
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 15,
+                ),
+              ),
+            ],
           ),
+        ),
+      );
+    },
+  ),
+),
+
+  
           const SizedBox(height: 20),
           ////////// title for popular recipes
           const Padding(
