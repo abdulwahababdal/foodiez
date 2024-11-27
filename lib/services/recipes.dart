@@ -28,10 +28,8 @@ class DioClient {
         "ingredients": recipe.ingredients,
         "description": recipe.description,
         "category": recipe.category,
-        "image": recipe.image,
-        "steps": recipe.steps
         //await MultipartFile.fromFile(
-        //recipe.image,
+
         //),
       });
       Response response = await Client.dio.post('/recipes', data: data);
